@@ -1,8 +1,8 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: KoalaTs 🐨
+description: KoalaTs is crafted for the laziest backend developers because nothing pairs better with clean APIs than a good nap.
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://koala-ts.github.io/docs
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Github: https://github.com/koala-ts
