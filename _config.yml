@@ -15,3 +15,29 @@ gh_edit_link_text: "See something off? Fix it on GitHub. ✍️"
 gh_edit_repository: "https://github.com/koala-ts/docs"
 gh_edit_branch: "main"
 gh_edit_view_mode: "edit"
+
+callouts:
+  warning:
+    title: Warning
+    color: yellow
+  error:
+    title: Error
+    color: red
+  info:
+    title: Info
+    color: blue
+  success:
+    title: Success
+    color: green
+  note:
+    title: Note
+    color: purple
+  tip:
+    title: Tip
+    color: green
+  important:
+    title: Important
+    color: red
+  caution:
+    title: Caution
+    color: yellow
