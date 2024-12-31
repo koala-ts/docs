@@ -48,6 +48,21 @@ In the example above, the `index` method of the `HomeController` class will be c
 The `method` property of the `@Route` decorator can be used to match specific HTTP methods. The value can be a string of
 one of the following methods: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`, or `ANY`.
 
+## Route Parameters
+
+You can define route parameters by adding a colon `:` followed by the parameter name in the `path` property of the
+`@Route` decorator.
+
+```typescript
+@Route({ method: 'GET', path: '/user/:id' })
+```
+
+Then you can access the parameter value in the controller method by using the `scope.params` object.
+
+```typescript
+const { id } = scope.params;
+````
+
 ## Middleware
 
 You can add multiple middleware functions to a route by passing an array of middleware functions to the `middleware` of
