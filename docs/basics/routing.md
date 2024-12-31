@@ -45,8 +45,22 @@ In the example above, the `index` method of the `HomeController` class will be c
 
 ## Matching HTTP Methods
 
-The `method` property of the `@Route` decorator can be used to match specific HTTP methods. The value can be a string of
-one of the following methods: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`, or `ANY`.
+The `method` property of the `@Route` decorator can be used to match specific HTTP methods. The value can be
+one of the following methods: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, or `HEAD`.
+
+You can also match multiple HTTP methods by passing an array of methods to the `method` property.
+
+```typescript
+@Route({ method: 'GET', path: '/' }) // Matches only GET requests
+@Route({ method: ['GET', 'POST'], path: '/' }) // Matches both GET and POST requests
+```
+
+And to match all HTTP methods, you can use the `ALL` or `ANY` method.
+
+```typescript
+@Route({ method: 'ALL', path: '/' }) // Matches all HTTP methods
+@Route({ method: 'ANY', path: '/' }) // Matches all HTTP methods
+```
 
 ## Route Parameters
 
