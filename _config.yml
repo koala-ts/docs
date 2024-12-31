@@ -18,27 +18,21 @@ gh_edit_branch: "main"
 gh_edit_view_mode: "edit"
 
 callouts:
-  warning:
-    title: Warning
-    color: yellow
-  error:
-    title: Error
-    color: red
-  info:
-    title: Info
-    color: blue
-  success:
-    title: Success
-    color: green
   note:
     title: Note
-    color: purple
+    color: blue
   tip:
     title: Tip
     color: green
   important:
     title: Important
-    color: red
+    color: purple
+  warning:
+    title: Warning
+    color: yellow
   caution:
     title: Caution
-    color: yellow
+    color: red
+
+back_to_top: true
+back_to_top_text: "Back to top"
