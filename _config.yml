@@ -1,8 +1,17 @@
 title: KoalaTs 🐨
 description: KoalaTs is crafted for the laziest backend developers because nothing pairs better with clean APIs than a good nap.
 theme: just-the-docs
+favicon_ico: "/assets/images/favicon.ico"
 
 url: https://koala-ts.github.io/docs
 
 aux_links:
   Github: https://github.com/koala-ts
+
+
+footer_content: "KoalaTS: Effortlessly elegant, relentlessly efficient. 🎩🐨"
+gh_edit_link: true
+gh_edit_link_text: "See something off? Fix it on GitHub. ✍️"
+gh_edit_repository: "https://github.com/koala-ts/docs"
+gh_edit_branch: "main"
+gh_edit_view_mode: "edit"
