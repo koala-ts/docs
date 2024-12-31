@@ -6,7 +6,8 @@ favicon_ico: "/assets/images/favicon.ico"
 url: https://koala-ts.github.io/docs
 
 aux_links:
-  Github: https://github.com/koala-ts
+  Discussions: https://github.com/koala-ts/framework/discussions
+  Roadmap: https://github.com/orgs/koala-ts/projects/1
 
 
 footer_content: "KoalaTS: Effortlessly elegant, relentlessly efficient. 🎩🐨"
