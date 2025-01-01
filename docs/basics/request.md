@@ -9,19 +9,22 @@ nav_order: 2
 
 The `IScope` interface which is passed to the controller method provides access to the incoming request data.
 
-```typescript
-import { type IScope, Route } from '@koala-ts/framework';
+## Input
 
-export class OrderController {
+### Request body and query parameters
+
+The `request` object provides access to the request `body` and `query` parameters.
+
+```typescript
+export class UserController {
     @Route({ method: 'POST', path: '/users' })
-    store(scope: IScope): void {
-        const { request } = scope; // Access the request object
+    store({ request }: IScope) {
+        const { body, query } = request;
     }
 }
-
 ```
 
-## Interacting with the Request
+## Request details
 
 ### Request properties
 
@@ -44,24 +47,9 @@ headers.
 ```typescript
 export class UserController {
     @Route({ method: 'POST', path: '/users' })
-    store({ request }: ISScope) {
+    store({ request }: IScope) {
         const { headers } = request;
         const contentType = headers['content-type'];
-    }
-}
-```
-
-## Input
-
-### Request body and query parameters
-
-The `request` object also provides access to the request `body` and `query` parameters.
-
-```typescript
-export class UserController {
-    @Route({ method: 'POST', path: '/users' })
-    store({ request }: IScope) {
-        const { body, query } = request;
     }
 }
 ```
