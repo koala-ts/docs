@@ -1,6 +1,7 @@
 ---
 title: Home
 nav_order: 1
+layout: home
 ---
 
 Welcome to KoalaTs! KoalaTs is crafted for the laziest backend developers because nothing pairs better with clean APIs
