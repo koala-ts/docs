@@ -1,6 +1,6 @@
 ---
 title: Routing
-layout: page
+layout: post
 parent: Basics
 nav_order: 1
 ---
