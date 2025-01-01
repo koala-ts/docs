@@ -6,7 +6,7 @@ favicon_ico: "/assets/images/favicon.ico"
 url: https://koala-ts.github.io/docs
 defaults:
   - scope:
-      path: "docs"
+      path: ""
       type: "pages"
     values:
       layout: "default"
