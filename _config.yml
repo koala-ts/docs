@@ -3,7 +3,6 @@ description: KoalaTs is crafted for the laziest backend developers because nothi
 theme: just-the-docs
 favicon_ico: "/assets/images/favicon.ico"
 
-url: https://koala-ts.github.io/docs
 defaults:
   - scope:
       path: ""
