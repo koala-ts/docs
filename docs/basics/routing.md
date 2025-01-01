@@ -1,6 +1,5 @@
 ---
 title: Routing
-layout: post
 parent: Basics
 nav_order: 1
 ---

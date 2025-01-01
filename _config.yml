@@ -4,6 +4,12 @@ theme: just-the-docs
 favicon_ico: "/assets/images/favicon.ico"
 
 url: https://koala-ts.github.io/docs
+defaults:
+  - scope:
+      path: "docs"
+      type: "pages"
+    values:
+      layout: "default"
 
 aux_links:
   Discussions: https://github.com/koala-ts/framework/discussions

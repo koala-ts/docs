@@ -1,6 +1,5 @@
 ---
 title: Request
-layout: post
 parent: Basics
 nav_order: 2
 ---
