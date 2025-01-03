@@ -38,10 +38,23 @@ export class UserController {
 }
 ```
 
+### Request Parameters
+
+You can access the request parameters using the `params` property.
+
+```typescript
+export class UserController {
+    @Route({ method: 'GET', path: '/users/:id' })
+    show({ request }: IScope) {
+        const { params } = request;
+        const userId = params.id;
+    }
+}
+```
+
 ### Request headers
 
-You can access the request headers using the `headers` property. This property is an object that contains the request
-headers.
+You can access the request headers using the `headers` property.
 
 ```typescript
 export class UserController {
