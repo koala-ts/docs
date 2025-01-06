@@ -23,7 +23,21 @@ export class UserController {
 }
 ```
 
+### File uploads
+
 ## Request details
+
+If you need to allow file uploads on a specific route, you need to pass `multipart: true` in the route `options`.
+
+```typescript
+export class UserController {
+    @Route({ method: 'POST', path: '/users', options: { multipart: true } })
+    store({ request }: IScope) {
+        // assuming `avatar` is the name of the file input
+        const avatar = scope.request.files?.avatar as unknown as IUploadedFile;
+    }
+}
+````
 
 ### Request properties
 
