@@ -25,8 +25,6 @@ export class UserController {
 
 ### File uploads
 
-## Request details
-
 If you need to allow file uploads on a specific route, you need to pass `multipart: true` in the route `options`.
 
 ```typescript
@@ -38,6 +36,8 @@ export class UserController {
     }
 }
 ````
+
+## Request details
 
 ### Request properties
 
