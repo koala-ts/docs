@@ -60,3 +60,22 @@ scope.response.status = 204; // Or any other status code
 If `response.status` has not been set, The status will be set to `200` or `204` depending on `response.body`.
 Specifically, if `response.body` has been set as `null` or `undefined`, the status will be set to `204`. Otherwise, it
 will be set to `200`.
+
+## Response Headers
+
+There are two ways to set response headers:
+
+```typescript
+// using response.SetHeader for single header per call
+scope.response
+     .setHeader('X-Header-One', 'Header Value')
+     .setHeader('X-Header-Two', 'Header Value');
+
+// using response.withHeaders to set multiple headers
+scope.response.withHeaders({
+    'X-Header-One': 'Header Value',
+    'X-Header-Two': 'Header Value'
+});
+```
+
+As you have seen, both helpers are chainable.
