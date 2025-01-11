@@ -7,11 +7,10 @@ parent: Getting Started
 # Configuration
 
 Applications often need to be configured to run in different environments. For example, you might want to use a
-different database in development than in production. Configuration is a way to set up your application to run in
-different environments.
+different database in development than in production.
 
-Thanks to (dotenv)[https://www.npmjs.com/package/dotenv], KoalaTs provides a powerful way to manage your application
-configuration.
+Thanks to [dotenv](https://www.npmjs.com/package/dotenv), **KoalaTs 🐨** provides a powerful way to manage your
+application configuration.
 
 ## Environment files
 
@@ -50,3 +49,22 @@ Several other .env files are available to set environment variables in just the 
   are committed);
 - `.env.<environment>.local` (e.g. `.env.test.local`): defines machine-specific env var overrides only for one
   environment. It's similar to `.env.local`, but the overrides only apply to one environment.
+
+## Selecting the environment
+
+The environment is selected by the `NODE_ENV` environment variable. If you don't set it, the default value is
+`development`. You can set it before running your application:
+
+```bash
+NODE_ENV=production npm start
+```
+
+Or in your `package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "start": "NODE_ENV=production node dist/index.js"
+  }
+}
+```
