@@ -32,7 +32,7 @@ export const homeRoute = Route({
 });
 ```
 
-For simple routes, you can also use HTTP verb helpers:
+For single-method routes, you can also use HTTP verb helpers:
 
 ```typescript
 import { Get } from '@koala-ts/framework/routing';
@@ -43,7 +43,7 @@ export const homeRoute = Get('/', async (scope: HttpScope) => {
 });
 ```
 
-Helpers are convenience wrappers for the common case:
+Helpers are convenience wrappers for common HTTP methods:
 
 - `Get`
 - `Post`
@@ -54,14 +54,21 @@ Helpers are convenience wrappers for the common case:
 - `Options`
 - `Any`
 
-Helpers support both:
+Helpers support unnamed and named routes:
 
 ```typescript
 Get('/', handler);
 Get('/', 'home.show', handler);
 ```
 
-Use `Route(...)` when a route needs middleware, body parsing options, or multiple methods.
+They also accept route middleware before the final handler:
+
+```typescript
+Get('/users', authMiddleware, listUsers);
+Get('/users', 'users.list', authMiddleware, listUsers);
+```
+
+Use `Route(...)` when a route needs body parsing options, multiple methods, or object-style configuration.
 
 ## Registering Routes
 
@@ -212,7 +219,42 @@ Route({
 
 ## Middleware
 
-Attach route middleware with the `middleware` property.
+Attach route middleware by passing middleware functions before the final handler.
+
+```typescript
+import { Get } from '@koala-ts/framework/routing';
+import type { HttpScope, NextMiddleware } from '@koala-ts/framework';
+
+async function authMiddleware(scope: HttpScope, next: NextMiddleware): Promise<void> {
+  scope.response.set('x-auth', 'checked');
+  await next();
+}
+
+async function auditMiddleware(scope: HttpScope, next: NextMiddleware): Promise<void> {
+  scope.response.set('x-audit', 'recorded');
+  await next();
+}
+
+export const usersRoute = Get(
+  '/users',
+  authMiddleware,
+  auditMiddleware,
+  async (scope: HttpScope) => {
+    scope.response.body = [{ id: 1 }];
+  },
+);
+```
+
+The final function argument is always the route handler. Any preceding functions after the optional route name are
+route middleware, and KoalaTs runs them in the order they are declared.
+
+Named routes use the same rule:
+
+```typescript
+Get('/users', 'users.list', authMiddleware, auditMiddleware, listUsers);
+```
+
+Use the `middleware` property when a route is clearer as an object or also needs route options.
 
 ```typescript
 import { Route } from '@koala-ts/framework/routing';

@@ -162,16 +162,16 @@ export async function requestContextMiddleware(
 Then in your route handler, you can access the data set by the middleware:
 
 ```typescript
-export const profileRoute = Route({
-  method: 'GET',
-  path: '/profile',
-  middleware: [requestContextMiddleware],
-  handler: async ({request}: HttpScope) => {
-    // Access the request context set by the middleware
+import {Get} from '@koala-ts/framework/routing';
+
+export const profileRoute = Get(
+  '/profile',
+  requestContextMiddleware,
+  async ({request}: HttpScope) => {
     const requestId = requestScopeStore.get('requestId');
     const timestamp = requestScopeStore.get('timestamp');
 
     console.log(`Request ${requestId} started at ${timestamp}`);
   },
-});
+);
 ```
