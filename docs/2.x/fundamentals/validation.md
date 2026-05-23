@@ -141,6 +141,73 @@ const validationRules = {
 };
 ```
 
+#### `type`
+
+Use `type` when a field must match one runtime type.
+
+It skips `undefined`. For every other value, it compares against Koala's runtime type names. Arrays and `null` have
+their own type names, so `array` and `null` are different from `object`.
+
+It supports:
+
+- `type`: required; one allowed type or an array of allowed types
+- `message`: override the default message
+
+Allowed types are:
+
+- `string`
+- `number`
+- `boolean`
+- `bigint`
+- `symbol`
+- `function`
+- `object`
+- `array`
+- `null`
+
+```typescript
+const validationRules = {
+  age: [{ type: { type: 'number' } }],
+  identifier: [{ type: { type: ['string', 'number'] } }],
+};
+```
+
+### Comparison
+
+#### `unique`
+
+Use `unique` when an array must not contain duplicate items.
+
+It skips `undefined`. Any other non-array value returns a violation because the constraint only validates lists. Array
+items are compared with deep equality, so duplicate objects or nested arrays fail when their values match.
+
+It supports:
+
+- `message`: override the default message
+- `normalizer`: transform each array item before comparing uniqueness
+- `fields`: compare only the selected fields from each object item
+
+When `fields` is configured, every normalized array item must be an object.
+
+```typescript
+const validationRules = {
+  tags: [
+    {
+      unique: {
+        normalizer: value => (typeof value === 'string' ? value.trim() : value),
+      },
+    },
+  ],
+  coordinates: [
+    {
+      unique: {
+        fields: ['latitude', 'longitude'],
+      },
+    },
+  ],
+};
+```
+
 ### String
 
 #### `email`
@@ -181,6 +248,32 @@ const validationRules = {
 ```
 
 ### Other
+
+#### `all`
+
+Use `all` when every item in an array should pass the same nested rules.
+
+It skips `undefined`. Any other non-array value returns a violation because the constraint only validates lists. For
+array values, it runs the nested constraints against each element and keeps nested violation paths indexed, such as
+`tags[0]`.
+
+It supports:
+
+- `constraints`: required; the nested field schema to apply to each array element
+
+The nested constraints can use the same string form and object form as regular field rules.
+
+```typescript
+const validationRules = {
+  tags: [
+    {
+      all: {
+        constraints: ['notBlank', { slug: { message: 'Use lowercase slugs only.' } }],
+      },
+    },
+  ],
+};
+```
 
 #### `compound`
 
