@@ -1,29 +1,31 @@
 .page {
   background:
-    radial-gradient(circle at top center, rgba(45, 212, 191, 0.12), transparent 26rem),
-    linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+    linear-gradient(rgba(15, 118, 110, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 118, 110, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 54%, #ffffff 100%);
+  background-size: 3rem 3rem, 3rem 3rem, auto;
   color: #0b0f14;
 }
 
 .container {
-  width: min(100% - 2rem, 68.75rem);
+  width: min(100% - 2rem, 74rem);
   margin: 0 auto;
 }
 
 .section {
-  padding: 5.5rem 0;
+  padding: 5.25rem 0;
 }
 
 .sectionHeader {
-  max-width: 40rem;
-  margin-bottom: 2.5rem;
+  max-width: 44rem;
+  margin-bottom: 2.25rem;
 }
 
 .eyebrow {
   margin: 0 0 0.75rem;
   color: #0f766e;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.76rem;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -31,51 +33,52 @@
 .sectionTitle {
   margin: 0;
   color: #0b0f14;
-  font-size: clamp(2rem, 4vw, 2.9rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
 }
 
 .sectionDescription {
   margin: 1rem 0 0;
   color: rgba(11, 15, 20, 0.72);
-  font-size: 1.05rem;
+  font-size: 1.04rem;
   line-height: 1.75;
 }
 
 .hero {
-  padding: 6rem 0 4.5rem;
+  padding: 6.5rem 0 4.75rem;
 }
 
 .heroGrid {
   display: grid;
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: center;
-  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.9fr);
 }
 
 .heroCopy {
-  max-width: 40rem;
+  max-width: 43rem;
 }
 
 .heroTitle {
+  max-width: 48rem;
   margin: 0;
   color: #0b0f14;
-  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  font-size: clamp(3rem, 7vw, 5.4rem);
   line-height: 0.96;
-  letter-spacing: -0.04em;
 }
 
 .heroText {
-  margin: 1.5rem 0 0;
+  max-width: 42rem;
+  margin: 1.45rem 0 0;
   color: rgba(11, 15, 20, 0.72);
-  font-size: 1.125rem;
+  font-size: 1.13rem;
   line-height: 1.8;
 }
 
 .buttonRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.85rem;
   margin-top: 2rem;
 }
 
@@ -83,126 +86,295 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  padding: 0.85rem 1.2rem;
+  min-height: 3.1rem;
+  padding: 0.82rem 1.15rem;
   border: 1px solid transparent;
-  border-radius: 999px;
-  font-weight: 700;
+  border-radius: 0.5rem;
+  font-weight: 800;
   text-decoration: none;
-  transition: border-color 120ms ease, background-color 120ms ease, color 120ms ease;
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
 }
 
 .button:hover {
   text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .buttonPrimary {
   background: #0f766e;
-  color: #f9fafb;
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(15, 118, 110, 0.18);
 }
 
 .buttonPrimary:hover {
   background: #115e59;
-  color: #f9fafb;
+  color: #ffffff;
 }
 
 .buttonSecondary {
-  border-color: rgba(15, 118, 110, 0.18);
-  background: #f9fafb;
+  border-color: rgba(15, 23, 42, 0.12);
+  background: #ffffff;
   color: #0b0f14;
 }
 
 .buttonSecondary:hover {
-  border-color: #0f766e;
+  border-color: rgba(15, 118, 110, 0.45);
   color: #0b0f14;
 }
 
 .card {
   height: 100%;
-  padding: 1.5rem;
-  border: 1px solid rgba(15, 118, 110, 0.1);
-  border-radius: 1.25rem;
-  background: #f9fafb;
-  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.06);
+  padding: 1.4rem;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.055);
 }
 
-.heroCard {
-  display: grid;
+.architecturePanel {
+  padding: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+}
+
+.panelHeader {
+  display: flex;
   gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.45rem 0.45rem 1rem;
 }
 
-.heroCardTitle {
+.panelEyebrow {
+  margin: 0 0 0.35rem;
+  color: #0f766e;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panelTitle {
   margin: 0;
   color: #0b0f14;
   font-size: 1.1rem;
+  line-height: 1.25;
 }
 
-.heroCardText {
-  margin: 0;
-  color: rgba(11, 15, 20, 0.72);
-  line-height: 1.7;
+.panelBadge {
+  flex: 0 0 auto;
+  padding: 0.4rem 0.58rem;
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  border-radius: 999px;
+  background: rgba(240, 253, 250, 0.85);
+  color: #0f766e;
+  font-size: 0.72rem;
+  font-weight: 800;
 }
 
-.heroCardList {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.flowGrid {
   display: grid;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
-.heroCardList li {
-  color: rgba(11, 15, 20, 0.8);
-  padding-left: 1.1rem;
+.flowStep {
   position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  column-gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  border-radius: 0.5rem;
+  background: #f8fafc;
 }
 
-.heroCardList li::before {
+.flowStep::after {
   content: '';
   position: absolute;
-  top: 0.7rem;
-  left: 0;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: #2dd4bf;
+  left: 2.24rem;
+  bottom: -0.76rem;
+  width: 1px;
+  height: 0.76rem;
+  background: rgba(15, 118, 110, 0.26);
+}
+
+.flowStep:last-child::after {
+  display: none;
+}
+
+.flowIndex {
+  display: inline-flex;
+  grid-row: span 2;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.45rem;
+  background: #0b0f14;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.flowStep h3 {
+  margin: 0;
+  color: #0b0f14;
+  font-size: 0.98rem;
+}
+
+.flowStep p {
+  margin: 0.25rem 0 0;
+  color: rgba(11, 15, 20, 0.66);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.panelCode {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background: #0b0f14;
+  color: #e5e7eb;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.proofStrip {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 3rem;
+  border-block: 1px solid rgba(15, 23, 42, 0.09);
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.proofItem {
+  padding: 1.25rem 1rem;
+  border-right: 1px solid rgba(15, 23, 42, 0.09);
+}
+
+.proofItem:last-child {
+  border-right: 0;
+}
+
+.proofItem strong {
+  display: block;
+  color: #0b0f14;
+  font-size: 1.05rem;
+}
+
+.proofItem span {
+  display: block;
+  margin-top: 0.25rem;
+  color: rgba(11, 15, 20, 0.64);
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .splitGrid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+}
+
+.statementCard {
+  background: #0b0f14;
+  color: #ffffff;
+}
+
+.statementCard .sectionDescription,
+.statementText {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.statementCard .sectionDescription {
+  margin-top: 0;
+}
+
+.statementTitle {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+}
+
+.statementText {
+  margin: 1rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.listCard {
+  background: #ffffff;
 }
 
 .copyList {
+  display: grid;
+  gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  gap: 1rem;
 }
 
 .copyList li {
-  color: rgba(11, 15, 20, 0.8);
-  line-height: 1.75;
-  padding-left: 1.25rem;
   position: relative;
+  padding-left: 1.35rem;
+  color: rgba(11, 15, 20, 0.78);
+  line-height: 1.72;
 }
 
 .copyList li::before {
   content: '';
   position: absolute;
-  top: 0.75rem;
+  top: 0.72rem;
   left: 0;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.48rem;
+  height: 0.48rem;
   border-radius: 50%;
-  background: #2dd4bf;
+  background: #0f766e;
+}
+
+.modelGrid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.modelIntro {
+  padding: 1.5rem 0;
+}
+
+.modelIntro .copyList {
+  margin-top: 1.4rem;
+}
+
+.modelSteps {
+  display: grid;
+  gap: 1rem;
+}
+
+.modelStepCard {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  column-gap: 1rem;
+}
+
+.modelStepCard .stepText {
+  grid-column: 2;
 }
 
 .featureGrid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
@@ -213,53 +385,56 @@
 }
 
 .featureCardText {
-  margin: 0.8rem 0 0;
-  color: rgba(11, 15, 20, 0.7);
-  line-height: 1.7;
+  margin: 0.75rem 0 0;
+  color: rgba(11, 15, 20, 0.68);
+  line-height: 1.68;
 }
 
 .codeTabs {
   overflow: hidden;
-  border: 1px solid rgba(15, 118, 110, 0.1);
-  border-radius: 1.25rem;
-  background: #f9fafb;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 22px 56px rgba(15, 23, 42, 0.08);
 }
 
 .tabList {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 1rem;
-  border-bottom: 1px solid rgba(15, 118, 110, 0.08);
+  gap: 0.6rem;
+  padding: 0.85rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f8fafc;
 }
 
 .tabButton,
 .tabButtonActive {
   appearance: none;
-  border: 0;
-  border-radius: 999px;
-  padding: 0.65rem 0.95rem;
+  border: 1px solid transparent;
+  border-radius: 0.45rem;
+  padding: 0.58rem 0.82rem;
   background: transparent;
   color: rgba(11, 15, 20, 0.62);
   font: inherit;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
 }
 
 .tabButtonActive {
-  background: rgba(45, 212, 191, 0.18);
+  border-color: rgba(15, 118, 110, 0.18);
+  background: #ffffff;
   color: #0f766e;
 }
 
 .codePanel {
-  padding: 0 1rem 1rem;
+  padding: 1rem;
 }
 
 .codeBlock {
   margin: 0;
   padding: 1.5rem;
   overflow-x: auto;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background: #0b0f14;
   color: #e5e7eb;
   font-size: 0.92rem;
@@ -268,26 +443,26 @@
 
 .architectureGrid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
 }
 
 .architectureCardGrid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .architectureList {
+  display: grid;
+  gap: 0.85rem;
   margin: 1.25rem 0 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  gap: 0.9rem;
 }
 
 .architectureList li {
-  color: rgba(11, 15, 20, 0.8);
-  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.7;
 }
 
 .architectureDetailCard {
@@ -296,7 +471,7 @@
 
 .stepsGrid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -307,22 +482,22 @@
   width: 2rem;
   height: 2rem;
   margin-bottom: 1rem;
-  border-radius: 50%;
-  background: rgba(45, 212, 191, 0.18);
+  border-radius: 0.45rem;
+  background: rgba(15, 118, 110, 0.1);
   color: #0f766e;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .stepTitle {
   margin: 0;
   color: #0b0f14;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
 }
 
 .stepText {
-  margin: 0.8rem 0 0;
-  color: rgba(11, 15, 20, 0.72);
-  line-height: 1.7;
+  margin: 0.75rem 0 0;
+  color: rgba(11, 15, 20, 0.7);
+  line-height: 1.68;
 }
 
 .ctaSection {
@@ -331,19 +506,27 @@
 }
 
 .ctaCard {
+  padding: 2.6rem;
   text-align: center;
-  padding: 2.5rem;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 34%),
+    #ffffff;
+}
+
+.ctaCard .buttonRow {
+  justify-content: center;
 }
 
 .ctaTitle {
-  margin: 0;
+  max-width: 48rem;
+  margin: 0 auto;
   color: #0b0f14;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
 }
 
 .ctaText {
-  max-width: 36rem;
+  max-width: 42rem;
   margin: 1rem auto 0;
   color: rgba(11, 15, 20, 0.72);
   line-height: 1.75;
@@ -352,6 +535,7 @@
 @media (max-width: 996px) {
   .heroGrid,
   .splitGrid,
+  .modelGrid,
   .architectureGrid,
   .stepsGrid {
     grid-template-columns: 1fr;
@@ -360,9 +544,17 @@
   .featureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .architecturePanel {
+    max-width: 40rem;
+  }
 }
 
 @media (max-width: 640px) {
+  .container {
+    width: min(100% - 1.25rem, 74rem);
+  }
+
   .section {
     padding: 4rem 0;
   }
@@ -371,11 +563,42 @@
     padding-top: 4.5rem;
   }
 
+  .heroTitle {
+    font-size: clamp(2.5rem, 15vw, 3.4rem);
+  }
+
+  .button,
+  .buttonRow {
+    width: 100%;
+  }
+
+  .proofStrip,
   .featureGrid {
     grid-template-columns: 1fr;
   }
 
+  .proofItem {
+    border-right: 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.09);
+  }
+
+  .proofItem:last-child {
+    border-bottom: 0;
+  }
+
+  .panelHeader {
+    display: grid;
+  }
+
+  .modelStepCard {
+    grid-template-columns: 1fr;
+  }
+
+  .modelStepCard .stepText {
+    grid-column: auto;
+  }
+
   .ctaCard {
-    padding: 2rem 1.25rem;
+    padding: 2rem 1.1rem;
   }
 }

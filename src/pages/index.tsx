@@ -13,7 +13,9 @@ import {
   featureItems,
   gettingStartedSteps,
   ideaPoints,
+  modelSteps,
   problemPoints,
+  proofItems,
 } from '@site/src/components/landing/content';
 import styles from '@site/src/components/landing/landing.module.css';
 
@@ -29,98 +31,149 @@ export default function Home(): React.JSX.Element {
   return (
     <Layout
       title={siteConfig.title}
-      description="KoalaTS landing page for structured Node.js backend development."
+      description="KoalaTs documentation for structured TypeScript backend teams."
     >
       <main className={styles.page}>
         <Container>
           <section className={styles.hero}>
             <div className={styles.heroGrid}>
               <div className={styles.heroCopy}>
-                <p className={styles.eyebrow}>KoalaTS</p>
+                <p className={styles.eyebrow}>KoalaTs for backend teams</p>
                 <h1 className={styles.heroTitle}>
-                  Build robust Node.js backends without overthinking
+                  Function-first TypeScript backends with one readable shape
                 </h1>
                 <p className={styles.heroText}>
-                  KoalaTS is a batteries-included framework that brings
-                  structure, scalability, and functional programming into
-                  real-world backend development.
+                  KoalaTs gives Node teams a consistent service model: configure
+                  the application once, compose backend behavior from explicit
+                  functions, and use framework utilities for the work that every
+                  backend service usually needs.
                 </p>
                 <div className={styles.buttonRow}>
-                  <Button to={docsUrl}>Read the Docs</Button>
-                  <Button to={getStartedUrl} variant="secondary">
-                    Get Started
+                  <Button to={getStartedUrl}>Build your first service</Button>
+                  <Button to={docsUrl} variant="secondary">
+                    Explore the docs
                   </Button>
                 </div>
               </div>
-              <Card className={styles.heroCard}>
-                <h2 className={styles.heroCardTitle}>Why teams reach for it</h2>
-                <p className={styles.heroCardText}>
-                  KoalaTS gives backend projects a clear starting point:
-                  function-first routes, middleware for request flow, explicit
-                  request and response handling, and utilities like request
-                  scope storage when context needs to follow async work.
-                </p>
-                <ul className={styles.heroCardList}>
-                  <li>Clear entry points for HTTP and application code</li>
-                  <li>Practical defaults instead of repeated framework assembly</li>
-                  <li>Patterns that stay readable as features and teams grow</li>
-                </ul>
-              </Card>
+              <div className={styles.architecturePanel}>
+                <div className={styles.panelHeader}>
+                  <div>
+                    <p className={styles.panelEyebrow}>Function-first flow</p>
+                    <h2 className={styles.panelTitle}>
+                      One service shape from setup to response
+                    </h2>
+                  </div>
+                  <span className={styles.panelBadge}>Function-first</span>
+                </div>
+                <div
+                  className={styles.flowGrid}
+                  aria-label="KoalaTs request flow"
+                >
+                  <div className={styles.flowStep}>
+                    <span className={styles.flowIndex}>01</span>
+                    <h3>Config</h3>
+                    <p>Register routes, middleware, static files, and events.</p>
+                  </div>
+                  <div className={styles.flowStep}>
+                    <span className={styles.flowIndex}>02</span>
+                    <h3>Pipeline</h3>
+                    <p>Apply validation, security, and request flow concerns.</p>
+                  </div>
+                  <div className={styles.flowStep}>
+                    <span className={styles.flowIndex}>03</span>
+                    <h3>Handler</h3>
+                    <p>Run application behavior with explicit HTTP primitives.</p>
+                  </div>
+                  <div className={styles.flowStep}>
+                    <span className={styles.flowIndex}>04</span>
+                    <h3>Utilities</h3>
+                    <p>
+                      Use testing, serialization, passwords, and request scope
+                      when needed.
+                    </p>
+                  </div>
+                </div>
+                <pre className={styles.panelCode}>
+                  <code>{`const app = create({
+  routes,
+  globalMiddleware,
+  staticFiles,
+});`}</code>
+                </pre>
+              </div>
+            </div>
+            <div className={styles.proofStrip}>
+              {proofItems.map((item) => (
+                <div key={item.value} className={styles.proofItem}>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
             </div>
           </section>
 
           <Section
             id="problem"
-            eyebrow="Problem"
-            title="Node backends don’t scale well by default"
+            eyebrow="Team consistency"
+            title="Give every service the same readable starting point"
+            description="KoalaTs turns backend structure into a shared framework decision: application setup, request flow, validation, security, and supporting utilities follow the same model from service to service."
           >
             <div className={styles.splitGrid}>
-              <Card>
+              <Card className={styles.statementCard}>
+                <h3 className={styles.statementTitle}>
+                  Consistency works best when the code still reads plainly.
+                </h3>
+                <p className={styles.statementText}>
+                  KoalaTs keeps the common path explicit: configure the
+                  service, compose behavior from functions, and keep the request
+                  and response model visible enough for the team to review.
+                </p>
+              </Card>
+              <Card className={styles.listCard}>
                 <ul className={styles.copyList}>
                   {problemPoints.map((point) => (
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
               </Card>
-              <Card>
-                <p className={styles.sectionDescription}>
-                  Most Node backends work at first, then accumulate ad hoc
-                  structure. Each team solves routing, validation, state, and
-                  boundaries a little differently, which makes the code harder
-                  to reason about over time.
-                </p>
-              </Card>
             </div>
           </Section>
 
           <Section
             id="idea"
-            eyebrow="Idea"
-            title="A structured way to build backends"
+            eyebrow="Framework model"
+            title="Function-first pieces, composed in a predictable order"
           >
-            <div className={styles.splitGrid}>
-              <Card>
+            <div className={styles.modelGrid}>
+              <div className={styles.modelIntro}>
                 <p className={styles.sectionDescription}>
-                  KoalaTS gives you a stable baseline built around explicit
-                  routes, middleware, request and response primitives, and
-                  predictable application structure. You spend less time
-                  inventing conventions and more time building backend behavior.
+                  The framework shape is deliberately simple: one application
+                  configuration, function-first routes and middleware, explicit
+                  HTTP primitives, and focused utilities that support the
+                  service without hiding the flow.
                 </p>
-              </Card>
-              <Card>
                 <ul className={styles.copyList}>
                   {ideaPoints.map((point) => (
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
-              </Card>
+              </div>
+              <div className={styles.modelSteps}>
+                {modelSteps.map((step, index) => (
+                  <Card key={step.title} className={styles.modelStepCard}>
+                    <span className={styles.stepNumber}>{index + 1}</span>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepText}>{step.body}</p>
+                  </Card>
+                ))}
+              </div>
             </div>
           </Section>
 
           <Section
             id="what-you-get"
-            eyebrow="What You Get"
-            title="The pieces you need to keep moving"
+            eyebrow="Capabilities"
+            title="A practical framework surface around that model"
           >
             <div className={styles.featureGrid}>
               {featureItems.map((item) => (
@@ -135,8 +188,8 @@ export default function Home(): React.JSX.Element {
           <Section
             id="code-examples"
             eyebrow="Examples"
-            title="A framework shape you can read quickly"
-            description="KoalaTS keeps the surface area small: define routes explicitly and validate input with plain constraints that stay easy to read."
+            title="Start from the application, then follow the functions"
+            description="The examples move in the same order as the framework story: create the app, register a route, and compose validation as middleware."
           >
             <CodeExampleTabs tabs={codeTabs} />
           </Section>
@@ -144,25 +197,29 @@ export default function Home(): React.JSX.Element {
           <Section
             id="architecture"
             eyebrow="Architecture"
-            title="Designed with architecture in mind"
+            title="Architecture by explicit composition"
           >
             <div className={styles.architectureGrid}>
-              <Card>
+              <Card className={styles.statementCard}>
                 <p className={styles.sectionDescription}>
-                  KoalaTS is influenced by the same ideas that make larger
-                  systems maintainable: clear boundaries, explicit dependencies,
-                  and a separation between transport concerns and application
-                  behavior.
+                  KoalaTs keeps architecture close to the code: setup is
+                  configuration, request flow is middleware, backend behavior is
+                  composed from functions, and supporting utilities stay in
+                  their lane. The result is a service shape the team can discuss
+                  and change without decoding hidden framework state.
                 </p>
                 <ul className={styles.architectureList}>
-                  <li>Inspired by DDD and Clean Architecture without turning them into ceremony.</li>
-                  <li>Separation of concerns between HTTP handling, middleware, and application logic.</li>
-                  <li>Code that stays easier to discuss, review, and evolve as a system.</li>
+                  <li>Application setup remains visible in configuration.</li>
+                  <li>Routes, middleware, and validators compose as functions.</li>
+                  <li>Security, testing, and serialization stay focused.</li>
                 </ul>
               </Card>
               <div className={styles.architectureCardGrid}>
                 {architectureCards.map((card) => (
-                  <Card key={card.title} className={styles.architectureDetailCard}>
+                  <Card
+                    key={card.title}
+                    className={styles.architectureDetailCard}
+                  >
                     <h3 className={styles.featureCardTitle}>{card.title}</h3>
                     <p className={styles.featureCardText}>{card.description}</p>
                   </Card>
@@ -174,7 +231,7 @@ export default function Home(): React.JSX.Element {
           <Section
             id="getting-started"
             eyebrow="Getting Started"
-            title="Start small and keep the structure"
+            title="Start small, keep the service shape"
           >
             <div className={styles.stepsGrid}>
               {gettingStartedSteps.map((step, index) => (
@@ -190,17 +247,18 @@ export default function Home(): React.JSX.Element {
           <Section className={styles.ctaSection}>
             <Card className={styles.ctaCard}>
               <h2 className={styles.ctaTitle}>
-                Start building structured backends today
+                Build the first function-first service your team can reuse
               </h2>
               <p className={styles.ctaText}>
-                Start with the documentation when you want the full model, or
-                jump into the quick start and build your first structured
-                endpoint right away.
+                Use the quick start to create a running KoalaTs application, or
+                read the framework guide to understand the application
+                configuration, function-first routing, validation, request, and
+                response model before you build.
               </p>
               <div className={styles.buttonRow}>
-                <Button to={docsUrl}>Read the Docs</Button>
-                <Button to={getStartedUrl} variant="secondary">
-                  Try KoalaTS
+                <Button to={getStartedUrl}>Build your first service</Button>
+                <Button to={docsUrl} variant="secondary">
+                  Read the framework guide
                 </Button>
               </div>
             </Card>
