@@ -1,42 +1,92 @@
 export const problemPoints = [
-  'Projects become messy as they grow.',
-  'Teams drift because there is no shared structure.',
-  'Every new service starts with another round of library decisions.',
-  'Functional programming sounds good, but applying it consistently is hard.',
+  'Application setup starts from one configuration object, so service wiring is visible before request handling begins.',
+  'Routes, middleware, validation, static files, and event subscribers are registered through the same service shape.',
+  'Security, testing, serialization, password helpers, and request-scoped state stay available as focused framework utilities.',
+  'New contributors can inspect the same function-first structure before changing backend behavior.',
 ] as const;
 
 export const ideaPoints = [
-  'Clear architecture from day one.',
-  'Built-in patterns that reduce incidental decisions.',
-  'Practical functional programming without turning everything into theory.',
-  'A workflow focused on shipping backend features, not rebuilding conventions.',
+  'Start with application configuration so service setup has one readable entry point.',
+  'Compose behavior from functions: routes, middleware, validators, subscribers, and utilities.',
+  'Keep request data, response data, and validation rules explicit at the boundary.',
+  'Let framework utilities support real backend work without hiding the application flow.',
 ] as const;
 
 export const featureItems = [
   {
-    title: 'Batteries included',
+    title: 'Application configuration',
     description:
-      'Start with routing, middleware, request and response handling, and request-scoped context without stitching together a framework from scratch.',
+      'Give each service the same starting point: routes, global middleware, static files, and event subscribers declared in configuration.',
   },
   {
-    title: 'Functional-first approach',
+    title: 'Function-first routing',
     description:
-      'Keep application logic in plain functions with explicit inputs and dependencies instead of hiding behavior behind implicit state.',
+      'Define HTTP methods and paths as route functions that keep backend entry points easy to scan and review.',
   },
   {
-    title: 'Consistent structure',
+    title: 'Request and response primitives',
     description:
-      'Use the same route, middleware, and configuration patterns across services so teams can read and extend code without re-learning the project shape.',
+      'Handle body, query, parameters, headers, status, response body, and response headers through explicit HTTP primitives.',
   },
   {
-    title: 'Scalable by design',
+    title: 'Validation toolkit',
     description:
-      'Grow from simple endpoints to larger modules while keeping HTTP concerns, application logic, and shared utilities understandable.',
+      'Describe input rules with built-in constraints, custom validators, flattened violations, and reusable validation middleware.',
   },
   {
-    title: 'Focus on real backend problems',
+    title: 'Security utilities',
     description:
-      'Solve request flow, validation, context propagation, and service boundaries instead of spending that time debating libraries and wiring.',
+      'Apply firewall middleware for authenticated routes and use password hashing utilities for credential workflows.',
+  },
+  {
+    title: 'Static files and assets',
+    description:
+      'Serve public assets from configurable static file settings when a service needs to expose files directly.',
+  },
+  {
+    title: 'Testing support',
+    description:
+      'Create HTTP test agents from application configuration, including authenticated request scenarios through act-as support.',
+  },
+  {
+    title: 'Serialization and normalization',
+    description:
+      'Normalize common response data structures with framework utilities for arrays, records, dates, and null values.',
+  },
+  {
+    title: 'Request-scoped context',
+    description:
+      'Propagate per-request data across async work when handlers, middleware, subscribers, and shared utilities need the same context.',
+  },
+] as const;
+
+export const proofItems = [
+  {
+    value: 'Shape',
+    label: 'One application configuration for service setup',
+  },
+  {
+    value: 'Functions',
+    label: 'Routes, middleware, validators, and utilities compose explicitly',
+  },
+  {
+    value: 'Coverage',
+    label: 'HTTP, validation, security, testing, static files, and serialization',
+  },
+] as const;
+
+export const modelSteps = [
+  {
+    title: 'Give the service one shape',
+    body: 'Start from create(...) and declare routes, global middleware, static files, and event subscribers in configuration.',
+  },
+  {
+    title: 'Compose behavior as functions',
+    body: 'Use function-first routes, middleware, validators, and subscribers so request flow stays visible in code review.',
+  },
+  {
+    title: 'Use utilities where they belong',
+    body: 'Add security, testing agents, password helpers, serializers, static files, and request-scoped storage when the service needs them.',
   },
 ] as const;
 
@@ -47,41 +97,74 @@ export const gettingStartedSteps = [
   },
   {
     title: 'Configure and run',
-    body: 'Set your environment values, install dependencies, and start the server with the generated project scripts.',
+    body: 'Set environment values, review the application configuration, install dependencies, and start the server.',
   },
   {
-    title: 'Add your first endpoint',
-    body: 'Define a route, register it explicitly, and build from the documented basics for requests, responses, and middleware.',
+    title: 'Add backend behavior',
+    body: 'Register a function-first route, add validation or middleware where needed, and build from the documented request and response model.',
   },
 ] as const;
 
 export const architectureCards = [
   {
-    title: 'Application shape',
+    title: 'Application setup stays explicit',
     description:
-      'Function-first routes define HTTP entry points, middleware handles cross-cutting concerns, and the HTTP scope keeps request and response data explicit.',
+      'Routes, global middleware, static files, and event subscribers are registered through configuration instead of scattered setup code.',
   },
   {
-    title: 'Why it matters',
+    title: 'Functional composition stays practical',
     description:
-      'That structure reduces accidental coupling and makes it easier to reason about behavior as the codebase and team both grow.',
+      'Routes, middleware, validators, and utilities remain plain pieces that can be composed, reviewed, tested, and refactored.',
+  },
+  {
+    title: 'Framework utilities stay focused',
+    description:
+      'Validation, security, password hashing, testing, and serialization solve specific service needs without taking over application code.',
   },
 ] as const;
 
 export const codeTabs = [
   {
+    label: 'Application',
+    language: 'ts',
+    code: `import {create} from '@koala-ts/framework';
+import {statusRoute} from './routes';
+
+const app = create({
+  routes: [statusRoute],
+});
+
+app.listen(3000);`,
+  },
+  {
     label: 'Routing',
     language: 'ts',
-    code: `export const dashboardRoute = Get('/dashboard', async (scope) => {
-  scope.response.body = {ok: true};
+    code: `import {Get} from '@koala-ts/framework/routing';
+
+export const statusRoute = Get('/status', async (scope) => {
+  scope.response.body = {status: 'ok'};
 });`,
   },
   {
     label: 'Validation',
     language: 'ts',
-    code: `const constrains = {
+    code: `import {
+  builtInConstraints,
+  createValidationMiddleware,
+  createValidator,
+} from '@koala-ts/framework/validator';
+
+const validate = createValidator({
+  constraints: builtInConstraints,
+});
+
+const rules = {
   username: ['notBlank'],
   email: ['notBlank', 'email'],
-};`,
+};
+
+const validateBody = createValidationMiddleware({validate});
+
+export const validateUser = validateBody(rules);`,
   },
 ] as const;
