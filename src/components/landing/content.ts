@@ -1,37 +1,37 @@
 export const problemPoints = [
-  'Application setup starts from one configuration object, so service wiring is visible before request handling begins.',
-  'Routes, middleware, validation, static files, and event subscribers are registered through the same service shape.',
-  'Security, testing, serialization, password helpers, and request-scoped state stay available as focused framework utilities.',
-  'New contributors can inspect the same function-first structure before changing backend behavior.',
+  'Service setup becomes hard to trust when routes, middleware, assets, and events are wired in different places.',
+  'Request behavior is harder to review when validation and security live outside the path a request actually takes.',
+  'Shared helpers drift when each service chooses its own approach to testing, passwords, serialization, or request context.',
+  'New contributors move slower when they must learn a local framework shape before changing backend behavior.',
 ] as const;
 
 export const ideaPoints = [
-  'Start with application configuration so service setup has one readable entry point.',
-  'Compose behavior from functions: routes, middleware, validators, subscribers, and utilities.',
-  'Keep request data, response data, and validation rules explicit at the boundary.',
-  'Let framework utilities support real backend work without hiding the application flow.',
+  'Application configuration declares routes, global middleware, static files, and event subscribers in one place.',
+  'Routes, middleware, validators, and subscribers are functions the team can compose and review directly.',
+  'Request data, response data, and validation rules stay explicit at the HTTP boundary.',
+  'Focused utilities support security, testing, serialization, passwords, static files, and request-scoped state.',
 ] as const;
 
 export const featureItems = [
   {
     title: 'Application configuration',
     description:
-      'Give each service the same starting point: routes, global middleware, static files, and event subscribers declared in configuration.',
+      'Declare routes, global middleware, static files, and event subscribers from the application setup.',
   },
   {
     title: 'Function-first routing',
     description:
-      'Define HTTP methods and paths as route functions that keep backend entry points easy to scan and review.',
+      'Define HTTP methods and paths as route functions that keep backend entry points easy to scan.',
   },
   {
     title: 'Request and response primitives',
     description:
-      'Handle body, query, parameters, headers, status, response body, and response headers through explicit HTTP primitives.',
+      'Work with body, query, parameters, headers, status, response body, and response headers directly.',
   },
   {
     title: 'Validation toolkit',
     description:
-      'Describe input rules with built-in constraints, custom validators, flattened violations, and reusable validation middleware.',
+      'Use built-in constraints, custom validators, flattened violations, and reusable validation middleware.',
   },
   {
     title: 'Security utilities',
@@ -46,7 +46,7 @@ export const featureItems = [
   {
     title: 'Testing support',
     description:
-      'Create HTTP test agents from application configuration, including authenticated request scenarios through act-as support.',
+      'Create HTTP test agents from application configuration, including authenticated request scenarios.',
   },
   {
     title: 'Serialization and normalization',
@@ -62,64 +62,46 @@ export const featureItems = [
 
 export const proofItems = [
   {
-    value: 'Shape',
-    label: 'One application configuration for service setup',
+    value: 'Reviewable',
+    label: 'Service setup and request flow stay visible in code',
   },
   {
-    value: 'Functions',
-    label: 'Routes, middleware, validators, and utilities compose explicitly',
+    value: 'Composable',
+    label: 'Routes, middleware, validators, and subscribers are functions',
   },
   {
-    value: 'Coverage',
+    value: 'Practical',
     label: 'HTTP, validation, security, testing, static files, and serialization',
   },
 ] as const;
 
 export const modelSteps = [
   {
-    title: 'Give the service one shape',
-    body: 'Start from create(...) and declare routes, global middleware, static files, and event subscribers in configuration.',
+    title: 'Start with the application',
+    body: 'Use create(...) to declare the service entry points before request handling begins.',
   },
   {
-    title: 'Compose behavior as functions',
-    body: 'Use function-first routes, middleware, validators, and subscribers so request flow stays visible in code review.',
+    title: 'Build the request path',
+    body: 'Compose routes, middleware, validators, and subscribers as plain pieces in the order the service needs.',
   },
   {
-    title: 'Use utilities where they belong',
-    body: 'Add security, testing agents, password helpers, serializers, static files, and request-scoped storage when the service needs them.',
+    title: 'Add focused support',
+    body: 'Use security, testing, password, serializer, static file, and request-scope utilities without moving behavior out of sight.',
   },
 ] as const;
 
 export const gettingStartedSteps = [
   {
-    title: 'Create the project',
-    body: 'Generate a new application with `npx @koala-ts/cli create my-app` and start from the default structure.',
+    title: 'Run the quick start',
+    body: 'Generate a new application with `npx @koala-ts/cli create my-app` and inspect the default structure.',
   },
   {
-    title: 'Configure and run',
-    body: 'Set environment values, review the application configuration, install dependencies, and start the server.',
+    title: 'Read the framework guide',
+    body: 'Review how configuration, routing, validation, request, and response concepts fit together.',
   },
   {
-    title: 'Add backend behavior',
-    body: 'Register a function-first route, add validation or middleware where needed, and build from the documented request and response model.',
-  },
-] as const;
-
-export const architectureCards = [
-  {
-    title: 'Application setup stays explicit',
-    description:
-      'Routes, global middleware, static files, and event subscribers are registered through configuration instead of scattered setup code.',
-  },
-  {
-    title: 'Functional composition stays practical',
-    description:
-      'Routes, middleware, validators, and utilities remain plain pieces that can be composed, reviewed, tested, and refactored.',
-  },
-  {
-    title: 'Framework utilities stay focused',
-    description:
-      'Validation, security, password hashing, testing, and serialization solve specific service needs without taking over application code.',
+    title: 'Apply it to a service',
+    body: 'Register a route, add validation or middleware where needed, and keep the change easy to review.',
   },
 ] as const;
 
