@@ -8,7 +8,6 @@ import {CodeExampleTabs} from '@site/src/components/landing/CodeExampleTabs';
 import {Container} from '@site/src/components/landing/Container';
 import {Section} from '@site/src/components/landing/Section';
 import {
-  architectureCards,
   codeTabs,
   featureItems,
   gettingStartedSteps,
@@ -40,13 +39,12 @@ export default function Home(): React.JSX.Element {
               <div className={styles.heroCopy}>
                 <p className={styles.eyebrow}>KoalaTs for backend teams</p>
                 <h1 className={styles.heroTitle}>
-                  Function-first TypeScript backends with one readable shape
+                  TypeScript services your team can read the same way
                 </h1>
                 <p className={styles.heroText}>
-                  KoalaTs gives Node teams a consistent service model: configure
-                  the application once, compose backend behavior from explicit
-                  functions, and use framework utilities for the work that every
-                  backend service usually needs.
+                  KoalaTs gives Node teams a function-first backend framework
+                  with visible service wiring, explicit request handling, and
+                  framework utilities for the work every service has to repeat.
                 </p>
                 <div className={styles.buttonRow}>
                   <Button to={getStartedUrl}>Build your first service</Button>
@@ -60,7 +58,7 @@ export default function Home(): React.JSX.Element {
                   <div>
                     <p className={styles.panelEyebrow}>Function-first flow</p>
                     <h2 className={styles.panelTitle}>
-                      One service shape from setup to response
+                      From application setup to HTTP response
                     </h2>
                   </div>
                   <span className={styles.panelBadge}>Function-first</span>
@@ -72,25 +70,22 @@ export default function Home(): React.JSX.Element {
                   <div className={styles.flowStep}>
                     <span className={styles.flowIndex}>01</span>
                     <h3>Config</h3>
-                    <p>Register routes, middleware, static files, and events.</p>
+                    <p>Declare the service entry points before requests run.</p>
                   </div>
                   <div className={styles.flowStep}>
                     <span className={styles.flowIndex}>02</span>
                     <h3>Pipeline</h3>
-                    <p>Apply validation, security, and request flow concerns.</p>
+                    <p>Put validation and security where reviewers can see it.</p>
                   </div>
                   <div className={styles.flowStep}>
                     <span className={styles.flowIndex}>03</span>
                     <h3>Handler</h3>
-                    <p>Run application behavior with explicit HTTP primitives.</p>
+                    <p>Handle request data and response data directly.</p>
                   </div>
                   <div className={styles.flowStep}>
                     <span className={styles.flowIndex}>04</span>
                     <h3>Utilities</h3>
-                    <p>
-                      Use testing, serialization, passwords, and request scope
-                      when needed.
-                    </p>
+                    <p>Reach for focused helpers without hiding the flow.</p>
                   </div>
                 </div>
                 <pre className={styles.panelCode}>
@@ -114,19 +109,19 @@ export default function Home(): React.JSX.Element {
 
           <Section
             id="problem"
-            eyebrow="Team consistency"
-            title="Give every service the same readable starting point"
-            description="KoalaTs turns backend structure into a shared framework decision: application setup, request flow, validation, security, and supporting utilities follow the same model from service to service."
+            eyebrow="Team friction"
+            title="Backend code gets harder to review when every service invents its own shape"
+            description="Teams lose time when setup is scattered, middleware order is implicit, and contributors have to rediscover the local service pattern before they can make a safe change."
           >
             <div className={styles.splitGrid}>
               <Card className={styles.statementCard}>
                 <h3 className={styles.statementTitle}>
-                  Consistency works best when the code still reads plainly.
+                  The framework should make the common path visible.
                 </h3>
                 <p className={styles.statementText}>
-                  KoalaTs keeps the common path explicit: configure the
-                  service, compose behavior from functions, and keep the request
-                  and response model visible enough for the team to review.
+                  KoalaTs is built for teams that want backend conventions to be
+                  easy to inspect in code review, not hidden behind local
+                  patterns that differ from project to project.
                 </p>
               </Card>
               <Card className={styles.listCard}>
@@ -142,15 +137,15 @@ export default function Home(): React.JSX.Element {
           <Section
             id="idea"
             eyebrow="Framework model"
-            title="Function-first pieces, composed in a predictable order"
+            title="A small set of explicit pieces, composed in order"
           >
             <div className={styles.modelGrid}>
               <div className={styles.modelIntro}>
                 <p className={styles.sectionDescription}>
-                  The framework shape is deliberately simple: one application
-                  configuration, function-first routes and middleware, explicit
-                  HTTP primitives, and focused utilities that support the
-                  service without hiding the flow.
+                  KoalaTs keeps the service model practical: application
+                  configuration defines the entry points, routes and middleware
+                  stay as functions, HTTP state stays visible at the boundary,
+                  and utilities solve specific backend jobs.
                 </p>
                 <ul className={styles.copyList}>
                   {ideaPoints.map((point) => (
@@ -173,7 +168,7 @@ export default function Home(): React.JSX.Element {
           <Section
             id="what-you-get"
             eyebrow="Capabilities"
-            title="A practical framework surface around that model"
+            title="The framework surface teams usually need around HTTP work"
           >
             <div className={styles.featureGrid}>
               {featureItems.map((item) => (
@@ -189,49 +184,15 @@ export default function Home(): React.JSX.Element {
             id="code-examples"
             eyebrow="Examples"
             title="Start from the application, then follow the functions"
-            description="The examples move in the same order as the framework story: create the app, register a route, and compose validation as middleware."
+            description="The examples follow the same path a reviewer follows: application setup, route behavior, then validation middleware."
           >
             <CodeExampleTabs tabs={codeTabs} />
           </Section>
 
           <Section
-            id="architecture"
-            eyebrow="Architecture"
-            title="Architecture by explicit composition"
-          >
-            <div className={styles.architectureGrid}>
-              <Card className={styles.statementCard}>
-                <p className={styles.sectionDescription}>
-                  KoalaTs keeps architecture close to the code: setup is
-                  configuration, request flow is middleware, backend behavior is
-                  composed from functions, and supporting utilities stay in
-                  their lane. The result is a service shape the team can discuss
-                  and change without decoding hidden framework state.
-                </p>
-                <ul className={styles.architectureList}>
-                  <li>Application setup remains visible in configuration.</li>
-                  <li>Routes, middleware, and validators compose as functions.</li>
-                  <li>Security, testing, and serialization stay focused.</li>
-                </ul>
-              </Card>
-              <div className={styles.architectureCardGrid}>
-                {architectureCards.map((card) => (
-                  <Card
-                    key={card.title}
-                    className={styles.architectureDetailCard}
-                  >
-                    <h3 className={styles.featureCardTitle}>{card.title}</h3>
-                    <p className={styles.featureCardText}>{card.description}</p>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </Section>
-
-          <Section
             id="getting-started"
             eyebrow="Getting Started"
-            title="Start small, keep the service shape"
+            title="Evaluate the model, then build from it"
           >
             <div className={styles.stepsGrid}>
               {gettingStartedSteps.map((step, index) => (
@@ -247,13 +208,11 @@ export default function Home(): React.JSX.Element {
           <Section className={styles.ctaSection}>
             <Card className={styles.ctaCard}>
               <h2 className={styles.ctaTitle}>
-                Build the first function-first service your team can reuse
+                Try the service shape or read the model first
               </h2>
               <p className={styles.ctaText}>
-                Use the quick start to create a running KoalaTs application, or
-                read the framework guide to understand the application
-                configuration, function-first routing, validation, request, and
-                response model before you build.
+                Use the quick start to create a running service, or read the
+                framework guide before you bring the pattern to a team codebase.
               </p>
               <div className={styles.buttonRow}>
                 <Button to={getStartedUrl}>Build your first service</Button>
